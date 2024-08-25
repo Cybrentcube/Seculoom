@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecuLoom - Dashboard</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style >
+    body {
+        font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: black;
+        color: #fff;
+    }
+
+    .container {
+        width: 95%;
+        max-width: 1200px;
+        margin: 20px auto;
+        background-color: #010712;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.8);
+        overflow: hidden;
+    }
+
+    .header {
+        background-color: transparent;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        box-shadow: 0 0 50px #003546 inset;
+        color: #fff;
+        text-align: center;
+        padding: 10px;
+        border-radius: 10px 10px 0 0;
+        margin-bottom: 20px;
+    }
+
+    /* Navigation Bar */
+
+
+    .navbar a {
+        float: left;
+        display: block;
+        color: #fff;
+        
+        text-align: center;
+        padding: 14px 20px;
+        text-decoration: none;
+        font-size: 17px;
+    }
+
+    .navbar a:hover {
+        box-shadow: 0 0 30px #003546 inset;
+        border: #003546;
+        border-radius: 20px;
+    }
+
+    .dashboard-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+    }
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #00354638;
+        padding: 10px 20px;
+    }
+
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #00354638;
+        padding: 10px 20px;
+        z-index: 1000;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 15px;
+    }
+
+    .hamburger {
+        display: none;
+        cursor: pointer;
+    }
+
+    .hamburger i {
+        font-size: 24px;
+        color: white;
+    }
+    .close-icon {
+        display: none;
+        font-size: 36px;
+        color: white;
+        position:inherit;
+        top: 20px;
+        right: 20px;
+        cursor: pointer;
+        z-index: 1001;
+    }
+
+    @media (max-width: 768px) {
+        .nav-links {
+            display: none;
+            flex-direction: column;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 53, 70, 0.95);
+            padding: 20px;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+        }
+
+        .nav-links a {
+            padding: 20px;
+            font-size: 1.5em;
+            color: white;
+            text-align: center;
+        }
+
+        .hamburger {
+            display: block;
+        }
+        .close-icon {
+            display: block;
+        }
+    }
+ 
+    .details, .grade, .dashboard-section {
+        background-color: #00354630;/* Bottle green with transparency */
+        padding: 20px;
+        border-radius: 10px; /* Smooth, curved border */
+        box-shadow: 0 0 30px #003546 inset;/* Permanent glowing effect */
+        margin-bottom: 20px;
+        overflow: hidden;
+        backdrop-filter: blur(50px); /* Moderate blur for the glass effect */
+        border: 1px solid rgba(0, 0, 0, 0.3); /* Subtle border to match the glass effect */
+        color: #fff; /* White text for readability */
+        font-family: 'Arial', sans-serif; /* Clean, professional font */
+    }
+
+    .details h2, .grade h2, .dashboard-section h2 {
+        color: #fff;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .details p {
+        color: #ccc;
+        margin-bottom: 10px;
+    }
+
+    .grade {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+    }
+
+    .grade h2 {
+        margin-bottom: 20px;
+    }
+
+    .grade .grade-value {
+        font-size: 3em;
+        font-weight: bold;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-align: center;
+        margin-left: 20px;
+        color: #fff;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+    }
+
+    .grade-a-plus .grade-value {
+        background-color: #4caf50;
+    }
+
+    .grade-a .grade-value {
+        background-color: #8bc34a;
+    }
+
+    .grade-b .grade-value {
+        background-color: #ffeb3b;
+    }
+
+    .grade-c .grade-value {
+        background-color: #ff9800;
+    }
+
+    .grade-d .grade-value {
+        background-color: #f40303;
+    }
+
+    .grade-f .grade-value {
+        background-color: #460500;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th, td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #444;
+        color: #fff;
+    }
+
+    th {
+        color: #fff;
+        text-align: left;
+        font-weight: normal;
+    }
+
+    td {
+        color: #ddd;
+    }
+
+    .tooltip {
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 160px;
+        background-color: #1b1b32;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+        position: absolute;
+        z-index: 1;
+        bottom: 125%;
+        left: 50%;
+        margin-left: -80px;
+        opacity: 0;
+        transition: opacity 0.3s;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+    }
+
+    .tooltip:hover .tooltiptext {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .raw-headers {
+        overflow-x: auto;
+    }
+
+    .raw-headers p {
+        word-wrap: break-word;
+    }
+
+    pre {
+        padding: 20px;
+        overflow-x: auto;
+        white-space: pre-wrap;
+        color: #ddd;
+        margin-top: 20px;
+    }
+
+    h1, h2 {
+        color: #237692;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .fa-Informaional-circle {
+        color: #003546;
+        margin-left: 5px;
+    }
+
+    .Informaional {
+        border-left: 5px solid #4aa5c3;
+    }
+
+    .low {
+        border-left: 5px solid #8bc34a;
+    }
+
+    .medium {
+        border-left: 5px solid #ffeb3b;
+    }
+
+    .high {
+        border-left: 5px solid #f44336;
+    }
+
+    @media only screen and (max-width: 1200px) {
+        .dashboard-grid {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+    }
+
+    @media only screen and (max-width: 768px) {
+        .dashboard-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .details, .grade, .dashboard-section {
+            padding: 10px;
+        }
+
+        .grade .grade-value {
+            font-size: 2em;
+        }
+
+        .tooltip .tooltiptext {
+            width: 120px;
+            margin-left: -60px;
+        }
+    }
+
+    @media only screen and (max-width: 480px) {
+        .details p, .grade h2, .dashboard-section h2, th, td {
+            font-size: 0.9em;
+        }
+
+        .grade .grade-value {
+            font-size: 1.5em;
+            padding: 5px 10px;
+        }
+
+        .tooltip .tooltiptext {
+            width: 100px;
+            margin-left: -50px;
+        }
+
+        table, th, td {
+            display: block;
+            width: 100%;
+        }
+
+        th, td {
+            text-align: right;
+        }
+
+        th::before, td::before {
+            content: attr(data-label);
+            float: left;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+    }
+    </style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<div class="navbar">
+    <a href="https://www.cyberentcube.org" target="_blank">
+        <img src="{{ url_for('static', filename='L.png') }}" style="width:200px;">
+    </a>
+    <div class="nav-links" id="navLinks">
+        <span class="close-icon" onclick="toggleMenu()">&times;</span>
+        <a href="/">Scan Again</a>
+        <a href="https://www.cyberentcube.org/contact.html" target="_blank">Contact Us</a>
+    </div>
+    <div class="hamburger" onclick="toggleMenu()" nonce="{{ nonce }}">
+        <i class="fas fa-bars"></i>
+    </div>
+</div>
+    <div class="container">
+        <div class="header">
+            <h1 style="letter-spacing: 5px; padding-left: 30px;">META DASHBOARD</h1>
+            <!-- <a id="download-btn" class="download-btn">Download PDF Report</a> -->
+        </div>
+        <div class="dashboard-grid">
+            <div class="details">
+                <h2>SECURITY GRADE</h2>
+                <br>
+                <div class="grade {% if security_grade == 'A+' %}grade-a-plus{% elif security_grade == 'A' %}grade-a{% elif security_grade == 'B' %}grade-b{% elif security_grade == 'C' %}grade-c{% elif security_grade == 'D' %}grade-d{% else %}grade-f{% endif %}">
+                    <div class="grade-value">{{ security_grade }}</div>
+                    <br>
+                    <p>
+                    <strong>IP Address:</strong> {{ ip }}
+                    <br>
+                    <strong>Target URL:</strong> <a style="text-decoration: none; color: #4caf50;" href="http://{{target}}" target="_blank">{{target}}</a> </p>
+                    <br>
+                    <strong>Scan Date:</strong> {{ scan_datetime }}
+                </div>          
+            </div>
+            <section class="dashboard-section">
+                <h2>OPEN POSRTS</h2>
+                <br>
+                <table>
+                    <thead>
+                        <tr>
+                            <th><b>PORT</b></th>
+                            <th><b>SERVICE</b></th>
+                            <th><b>STATUS</b></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for result in results %}
+                            <tr>
+                                <td data-label="">{{ result.port }}</td>
+                                <td data-label="">{{ result.service }}</td>
+                                <td data-label="">Open</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="dashboard-section">
+                <h2 >WHOIS INFORMATION</h2>
+                <br>
+                <p>
+                    <strong>Domain Name: </strong> {{ whois_data.domain_name }}
+                    <br>
+                    <br>
+                    <strong>Registrar: </strong> {{ whois_data.registrar }}
+                    <br>
+                    <br>
+                    <strong>WHOIS Server: </strong> {{ whois_data.whois_server }}
+                    <br>
+                    <br>
+                    <strong>Creation Date: </strong> {{ whois_data.creation_date }}
+                    <br>
+                    <br>
+                    <strong>Expiration Date: </strong> {{ whois_data.expiration_date }}
+                    <br>
+                    <br>
+                    <strong>Updated Date: </strong> {{ whois_data.updated_date }}
+                    <br>
+                    <br>
+                    <strong>Status: </strong> {{ whois_data.status }}
+                    <br>
+                    <br>
+                    <strong>Name Servers: </strong> {{ whois_data.name_servers }}
+                    <br>
+                </p>
+            </section>
+
+            <section class="dashboard-section">
+                <h2>MISSING HTTP HEADERS</h2>
+                <br>
+                <table>
+                    <thead>
+                        <tr>
+                            <th><b>HEADERS</b></th>
+                            <th><b>CRITTCALITY</b></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for header, criticality in missing_headers %}
+                            <tr class="{% if criticality == 'Informaional' %}Informaional{% elif criticality == 'Low' %}low{% elif criticality == 'Medium' %}medium{% elif criticality == 'High' %}high{% endif %}">
+                                <td data-label="Header" class="tooltip {% if criticality == 'Informaional' %}Informaional{% elif criticality == 'Low' %}low{% elif criticality == 'Medium' %}medium{% elif criticality == 'High' %}high{% endif %}">
+                                    {{ header }}
+                                    <span class="tooltiptext">{{ header }} is {{ criticality }} criticality</span>
+                                </td>
+                                <td data-label="Criticality">{{ criticality }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="dashboard-section">
+                <h2>RAW HEADER</h2>
+                <br>
+                <div class="raw-headers">
+                    {% for key, value in raw_headers.items() %}
+                        <p>
+                            <strong>{{ key }}:</strong> {{ value }}
+                        </p>
+                    {% endfor %}
+                </div>
+            </section>
+           
+            <section class="dashboard-section">
+                <h2>DNS RECORDS</h2>
+                <pre>{{ dns_records | tojson(indent=4) }}</pre>
+            </section>
+
+            
+        </div>
+    </div>
+    <script nonce="{{ nonce }}">
+        function toggleMenu() {
+            var navLinks = document.getElementById("navLinks");
+            if (navLinks.style.display === "flex") {
+                navLinks.style.display = "none";
+            } else {
+                navLinks.style.display = "flex";
+            }
+        }
+    </script>
+    
+    
+    
+</body>
+</html>

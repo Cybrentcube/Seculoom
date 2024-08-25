@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecuLoom - Home</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Quicksand', sans-serif;
+}
+
+body {
+    background: #000;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent;
+    padding: 10px 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 17px;
+    padding: 14px 20px;
+    transition: background-color 0.3s ease, border-radius 0.3s ease;
+}
+
+.navbar a:hover {
+    box-shadow: 0 0 30px #003546 inset;
+    border: #003546;
+    border-radius: 20px;
+}
+
+.navbar .logo img {
+    width: 200px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 15px;
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.hamburger i {
+    font-size: 24px;
+    color: #fff;
+}
+
+.close-icon {
+    display: none;
+    font-size: 36px;
+    color: #fff;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 53, 70, 0.95);
+        padding: 20px;
+        align-items: center;
+        justify-content: center;
+        z-index: 999;
+        overflow-y: auto;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links a {
+        padding: 20px;
+        font-size: 1.5em;
+        color: #fff;
+        text-align: center;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .close-icon {
+        display: block;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping */
+    justify-content: center;
+    align-items: flex-start;
+    width: 100vw;
+    height: calc(100vh - 60px); 
+    margin-top: 60px;
+    padding: 20px;
+    gap: 20px;
+}
+
+.signin {
+    width: 100%;
+    max-width: 500px; /* Adjust max-width for better control */
+    height: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 30px #003546 inset, 0 0 30px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    color: #fff;
+    background-color: #00354630;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.tools{
+    width: 100%;
+    max-width: 500px; /* Adjust max-width for better control */
+    height: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    /* box-shadow: 0 0 30px #003546 inset, 0 0 30px rgba(0, 0, 0, 0.3); */
+    backdrop-filter: blur(10px);
+    /* border: 1px solid rgba(0, 0, 0, 0.3); */
+    color: #fff;
+    /* background-color: #00354630; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.signin {
+    clip-path: polygon(
+        5% 0%, 
+        95% 0%, 
+        100% 5%, 
+        100% 95%, 
+        95% 100%, 
+        5% 100%, 
+        0% 95%, 
+        0% 5%
+    );
+}
+
+@media (max-width: 768px) {
+    .tools,
+    .signin {
+        max-width: 100%; /* Full width in mobile view */
+        margin-bottom: 20px; /* Space between stacked divs */
+    }
+
+    .tools {
+        margin-bottom: 0; /* Remove bottom margin for the last item */
+    }
+}
+
+.signin h2,
+.tools h2 {
+    font-size: 2em;
+    color: #027ca4;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.signin .form,
+.tools .details {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.signin .form .inputBox {
+    position: relative;
+    width: 100%;
+}
+
+.signin .form .inputBox input {
+    width: 100%;
+    background: rgba(0, 0, 0, 0);
+    border: none;
+    padding: 15px 10px;
+    border-radius: 4px;
+    color: #fff;
+    text-align: center;
+    font-weight: 500;
+    font-size: 1em;
+    box-shadow: 0 0 5px #003546;
+    border-radius: 20px;
+    transition: border-color 0.3s ease;
+}
+
+.signin .form .inputBox input:focus {
+    border-color: #003546;
+}
+
+.signin .form .inputBox i {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #003546;
+    transition: 0.5s;
+    pointer-events: none;
+}
+
+.signin .form .inputBox input:focus~i,
+.signin .form .inputBox input:valid~i {
+    transform: translateY(-25px);
+    font-size: 0.8em;
+    color: #003546;
+}
+
+.signin .form input[type="submit"] {
+    padding: 12px 24px;
+    background: linear-gradient(145deg, #015f7e, #003546);
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    width: 50%;
+    font-size: 1.1em;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), inset 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease, transform 0.2s ease;
+    margin: auto;
+}
+
+.signin .form input[type="submit"]:hover {
+    background: linear-gradient(145deg, #014f6e, #003546);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3), inset 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.des {
+    font-size: small;
+    justify-content: center;
+    text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <a href="https://www.cyberentcube.org" target="_blank" class="logo">
+            <img src="{{ url_for('static', filename='L.png') }}" alt="Logo">
+        </a>
+        <div class="nav-links" id="navLinks">
+            <span class="close-icon" onclick="toggleMenu()">&times;</span>
+            <a href="https://www.cyberentcube.org/contact.html" target="_blank">Contact Us</a>
+            <a href="#whois-info">WHOIS Information</a>
+            <a href="#missing-headers">Missing Headers</a>
+            <a href="#raw-header">Raw Header</a>
+            <a href="#dns-records">DNS Records</a>
+        </div>
+        <div class="hamburger" onclick="toggleMenu()" nonce="{{ nonce }}">
+            <i class="fas fa-bars"></i>
+        </div>
+    </div>
+    <div class="container">
+        <div class="tools">
+            <img src="{{ url_for('static', filename='tes.gif') }}" style="margin:auto;" width="70%" alt="Logo">
+            <h2 style="font-size: medium;">SecuLoom</h2>
+            <p class="des">
+                <b>SecuLoom</b> provides a comprehensive analysis by offering features such as Open Ports, which identifies accessible network ports and potential security risks; WHOIS Information, which reveals domain registration details and ownership; Missing Headers, which highlights absent security headers in HTTP responses; Raw Header, which displays unprocessed HTTP headers for debugging; and DNS Records, which retrieves DNS information for domains to aid in configuration and troubleshooting. Each feature is designed to enhance security assessment and management.
+            </p>
+                <!-- Tools details go here -->
+        </div>
+        <div class="signin">
+            <h2 ><img src="{{ url_for('static', filename='L.png') }}" alt="Logo" style="width: 50%;"></h2>
+            
+
+            <form action="/" method="post" class="form">
+                <div class="inputBox">
+                    <input type="text" id="target" name="target" placeholder="example.com / www.example.com" required>
+                </div>
+                <input type="submit" value="Scan">
+            </form>
+          
+        </div>
+        <br><br>
+    </div>
+
+    <script nonce="{{ nonce }}">
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+</body>
+
+</html>
