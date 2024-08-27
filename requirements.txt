@@ -1,5 +1,5 @@
 Flask
 requests
-whois
+python-whois
 python-dotenv
 gunicorn
