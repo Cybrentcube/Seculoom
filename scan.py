@@ -109,10 +109,12 @@ def get_whois_data(domain):
             "status": w.status,
             "name_servers": w.name_servers
         }
+        print("WHOIS Data:", whois_info)  # Debugging line
         return whois_info
     except Exception as e:
         print(f"Error fetching WHOIS data for {domain}: {e}")
         return None
+
 
 def scan_tcp_port(ip, port):
     try:
