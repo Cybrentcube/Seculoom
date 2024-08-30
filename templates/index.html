@@ -10,295 +10,351 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Quicksand', sans-serif;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Quicksand', sans-serif;
+        }
 
-body {
-    background: #000;
-    color: #fff;
-    margin: 0;
-    padding: 0;
-}
+        body {
+            background: #000;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
 
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: transparent;
-    padding: 10px 20px;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-}
-
-.navbar a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 17px;
-    padding: 14px 20px;
-    transition: background-color 0.3s ease, border-radius 0.3s ease;
-}
-
-.navbar a:hover {
-    box-shadow: 0 0 30px #003546 inset;
-    border: #003546;
-    border-radius: 20px;
-}
-
-.navbar .logo img {
-    width: 200px;
-}
-
-.nav-links {
-    display: flex;
-    gap: 15px;
-}
-
-.hamburger {
-    display: none;
-    cursor: pointer;
-}
-
-.hamburger i {
-    font-size: 24px;
-    color: #fff;
-}
-
-.close-icon {
-    display: none;
-    font-size: 36px;
-    color: #fff;
-    cursor: pointer;
-}
-
-@media (max-width: 768px) {
         .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color:#003546 ;
-    padding: 10px 20px;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-}
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 53, 70, 0.95);
-        padding: 20px;
-        align-items: center;
-        justify-content: center;
-        z-index: 999;
-        overflow-y: auto;
-    }
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: transparent;
+            padding: 10px 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
 
-    .nav-links.active {
-        display: flex;
-    }
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 17px;
+            padding: 14px 20px;
+            transition: background-color 0.3s ease, border-radius 0.3s ease;
+        }
 
-    .nav-links a {
-        padding: 20px;
-        font-size: 1.5em;
-        color: #fff;
-        text-align: center;
-    }
+        .navbar a:hover {
+            box-shadow: 0 0 30px #003546 inset;
+            border: #003546;
+            border-radius: 20px;
+        }
 
-    .hamburger {
-        display: block;
-    }
+        .navbar .logo img {
+            width: 200px;
+        }
 
-    .close-icon {
-        display: block;
-        position: absolute;
-        top: 20px;
-        right: 20px;
-    }
-}
+        .nav-links {
+            display: flex;
+            gap: 15px;
+        }
 
-.container {
-    display: flex;
-    flex-wrap: wrap; /* Allow wrapping */
-    justify-content: center;
-    align-items: flex-start;
-    width: 100vw;
-    height: calc(100vh - 60px); 
-    margin-top: 60px;
-    padding: 20px;
-    gap: 20px;
-}
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
 
-.signin {
-    width: 100%;
-    max-width: 500px; /* Adjust max-width for better control */
-    height: 100%;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 30px #003546 inset, 0 0 30px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(0, 0, 0, 0.3);
-    color: #fff;
-    background-color: #00354630;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
+        .hamburger i {
+            font-size: 24px;
+            color: #fff;
+        }
 
-.tools{
-    width: 100%;
-    max-width: 500px; /* Adjust max-width for better control */
-    height: 100%;
-    padding: 20px;
-    border-radius: 10px;
-    /* box-shadow: 0 0 30px #003546 inset, 0 0 30px rgba(0, 0, 0, 0.3); */
-    backdrop-filter: blur(10px);
-    /* border: 1px solid rgba(0, 0, 0, 0.3); */
-    color: #fff;
-    /* background-color: #00354630; */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
+        .close-icon {
+            display: none;
+            font-size: 36px;
+            color: #fff;
+            cursor: pointer;
+        }
 
-.signin {
-    clip-path: polygon(
-        5% 0%, 
-        95% 0%, 
-        100% 5%, 
-        100% 95%, 
-        95% 100%, 
-        5% 100%, 
-        0% 95%, 
-        0% 5%
-    );
-}
+        @media (max-width: 768px) {
+            .navbar {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background-color: #003546;
+                padding: 10px 20px;
+                position: fixed;
+                width: 100%;
+                top: 0;
+                z-index: 1000;
+            }
 
-@media (max-width: 768px) {
-    .tools,
-    .signin {
-        max-width: 100%; /* Full width in mobile view */
-        margin-bottom: 20px; /* Space between stacked divs */
-    }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 53, 70, 0.95);
+                padding: 20px;
+                align-items: center;
+                justify-content: center;
+                z-index: 999;
+                overflow-y: auto;
+            }
 
-    .tools {
-        margin-bottom: 0; /* Remove bottom margin for the last item */
-    }
-}
+            .nav-links.active {
+                display: flex;
+            }
 
-.signin h2,
-.tools h2 {
-    font-size: 2em;
-    color: #027ca4;
-    text-transform: uppercase;
-    text-align: center;
-    margin-bottom: 20px;
-}
+            .nav-links a {
+                padding: 20px;
+                font-size: 1.5em;
+                color: #fff;
+                text-align: center;
+            }
 
-.signin .form,
-.tools .details {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
+            .hamburger {
+                display: block;
+            }
 
-.signin .form .inputBox {
-    position: relative;
-    width: 100%;
-}
+            .close-icon {
+                display: block;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+            }
+        }
 
-.signin .form .inputBox input {
-    width: 100%;
-    background: rgba(0, 0, 0, 0);
-    border: none;
-    padding: 15px 10px;
-    border-radius: 4px;
-    color: #fff;
-    text-align: center;
-    font-weight: 500;
-    font-size: 1em;
-    box-shadow: 0 0 5px #003546;
-    border-radius: 20px;
-    transition: border-color 0.3s ease;
-}
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-start;
+            width: 100vw;
+            height: calc(100vh - 60px);
+            margin-top: 60px;
+            padding: 20px;
+            gap: 20px;
+        }
 
-.signin .form .inputBox input:focus {
-    border-color: #003546;
-}
+        .signin {
+            width: 100%;
+            max-width: 500px;
+            height: 100%;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 30px #003546 inset, 0 0 30px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 0, 0, 0.3);
+            color: #fff;
+            background-color: #00354630;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            clip-path: polygon(
+                5% 0%, 
+                95% 0%, 
+                100% 5%, 
+                100% 95%, 
+                95% 100%, 
+                5% 100%, 
+                0% 95%, 
+                0% 5%
+            );
+        }
 
-.signin .form .inputBox i {
-    position: absolute;
-    left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #003546;
-    transition: 0.5s;
-    pointer-events: none;
-}
+        .tools {
+            width: 100%;
+            max-width: 500px;
+            height: 100%;
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
 
-.signin .form .inputBox input:focus~i,
-.signin .form .inputBox input:valid~i {
-    transform: translateY(-25px);
-    font-size: 0.8em;
-    color: #003546;
-}
+        @media (max-width: 768px) {
+            .tools,
+            .signin {
+                max-width: 100%;
+                margin-bottom: 20px;
+            }
 
-.signin .form input[type="submit"] {
-    padding: 12px 24px;
-    background: linear-gradient(145deg, #015f7e, #003546);
-    border: none;
-    color: #fff;
-    font-weight: 600;
-    width: 50%;
-    font-size: 1.1em;
-    letter-spacing: 0.05em;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), inset 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: background 0.3s ease, transform 0.2s ease;
-    margin: auto;
-}
+            .tools {
+                margin-bottom: 0;
+            }
+        }
 
-.signin .form input[type="submit"]:hover {
-    background: linear-gradient(145deg, #014f6e, #003546);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3), inset 0 6px 12px rgba(0, 0, 0, 0.2);
-}
+        .signin h2,
+        .tools h2 {
+            font-size: 2em;
+            color: #027ca4;
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 20px;
+        }
 
-.des {
-    font-size: small;
-    justify-content: center;
-    text-align: center;
-    padding-left: 20px;
-    padding-right: 20px;
-}
+        .signin .form,
+        .tools .details {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
 
+        .signin .form .inputBox {
+            position: relative;
+            width: 100%;
+        }
+
+        .signin .form .inputBox input {
+            width: 100%;
+            background: rgba(0, 0, 0, 0);
+            border: none;
+            padding: 15px 10px;
+            border-radius: 20px;
+            color: #fff;
+            text-align: center;
+            font-weight: 500;
+            font-size: 1em;
+            box-shadow: 0 0 5px #003546;
+            transition: border-color 0.3s ease;
+        }
+
+        .signin .form .inputBox input:focus {
+            border-color: #003546;
+        }
+
+        .signin .form input[type="submit"] {
+            padding: 12px 24px;
+            background: linear-gradient(145deg, #015f7e, #003546);
+            border: none;
+            color: #fff;
+            font-weight: 600;
+            width: 50%;
+            font-size: 1.1em;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), inset 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s ease, transform 0.2s ease;
+            margin: auto;
+        }
+
+        .signin .form input[type="submit"]:hover {
+            background: linear-gradient(145deg, #014f6e, #003546);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3), inset 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .des {
+            font-size: small;
+            justify-content: center;
+            text-align: center;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        /* CSS for the spinner and progress counter */
+        .spinner-container {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            z-index: 1001;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top-color: #015475;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .progress {
+            margin-top: 10px;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .dots {
+            display: inline-block;
+            position: relative;
+            height: 1em;
+            width: 4em;
+        }
+
+        .dot {
+            display: inline-block;
+            height: 1em;
+            width: 1em;
+            margin: 0 0.2em;
+            background-color: #fff;
+            border-radius: 50%;
+            animation: dotFlashing 1s infinite linear;
+        }
+
+        .dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        .dot:nth-child(4) {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes dotFlashing {
+            0% { opacity: 0.2; }
+            50% { opacity: 1; }
+            100% { opacity: 0.2; }
+        }
     </style>
 </head>
 
 <body>
     <div class="navbar">
-        <a href="https://www.cyberentcube.org" target="_blank" class="logo">
+        <div class="logo">
             <img src="{{ url_for('static', filename='L.png') }}" alt="Logo">
-        </a>
+        </div>
         <div class="nav-links" id="navLinks">
-            <span class="close-icon" onclick="toggleMenu()">&times;</span>
+            <i class="close-icon fas fa-times" onclick="toggleMenu()"></i>
             <a href="https://www.cyberentcube.org/contact.html" target="_blank">Contact Us</a>
             <a href="#whois-info">WHOIS Information</a>
             <a href="#missing-headers">Missing Headers</a>
             <a href="#raw-header">Raw Header</a>
             <a href="#dns-records">DNS Records</a>
         </div>
-        <div class="hamburger" onclick="toggleMenu()" nonce="{{ nonce }}">
+        <div class="hamburger" onclick="toggleMenu()">
             <i class="fas fa-bars"></i>
         </div>
     </div>
@@ -309,28 +365,64 @@ body {
             <p class="des">
                 <b>SecuLoom</b> provides a comprehensive analysis by offering features such as Open Ports, which identifies accessible network ports and potential security risks; WHOIS Information, which reveals domain registration details and ownership; Missing Headers, which highlights absent security headers in HTTP responses; Raw Header, which displays unprocessed HTTP headers for debugging; and DNS Records, which retrieves DNS information for domains to aid in configuration and troubleshooting. Each feature is designed to enhance security assessment and management.
             </p>
-                <!-- Tools details go here -->
         </div>
         <div class="signin">
-            <h2 ><img src="{{ url_for('static', filename='L.png') }}" alt="Logo" style="width: 50%;"></h2>
-            
-
-            <form action="/" method="post" class="form">
+            <h2><img src="{{ url_for('static', filename='L.png') }}" alt="Logo" style="width: 50%;"></h2>
+            <form id="scanForm" action="/" method="post" class="form">
                 <div class="inputBox">
                     <input type="text" id="target" name="target" placeholder="example.com / www.example.com" required>
                 </div>
                 <input type="submit" value="Scan">
             </form>
-          
         </div>
-        <br><br>
     </div>
 
-    <script nonce="{{ nonce }}">
+    <div class="spinner-container" id="spinnerContainer">
+        <div class="spinner"></div>
+        <div class="progress" id="progress">
+            <span id="progressText">Scanning</span>
+            <div class="dots">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </div>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <script>
         function toggleMenu() {
             const navLinks = document.getElementById('navLinks');
             navLinks.classList.toggle('active');
         }
+
+        document.getElementById('scanForm').addEventListener('submit', function() {
+            document.getElementById('spinnerContainer').style.display = 'block';
+            document.getElementById('overlay').style.display = 'block';
+
+            const progressTextElement = document.getElementById('progressText');
+            const dotsElement = document.querySelector('.dots');
+            let dotCount = 0;
+            const maxDots = 4;
+
+            const interval = setInterval(() => {
+                dotCount = (dotCount + 1) % (maxDots + 1);
+                dotsElement.innerHTML = '';
+                for (let i = 0; i < dotCount; i++) {
+                    const dot = document.createElement('div');
+                    dot.className = 'dot';
+                    dotsElement.appendChild(dot);
+                }
+            }, 500); // Adjust the interval speed to control the dot animation speed
+
+            // Optional: Hide the spinner container after a certain time
+            setTimeout(() => {
+                clearInterval(interval);
+                document.getElementById('spinnerContainer').style.display = 'none';
+                document.getElementById('overlay').style.display = 'none';
+            }, 30000); // Adjust the timeout duration as needed
+        });
     </script>
 </body>
 
