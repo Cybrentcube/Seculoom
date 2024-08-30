@@ -69,17 +69,7 @@ security_headers = {
 
 
 def set_security_headers(response):
-    response.headers['Content-Security-Policy'] = (
-        "default-src 'self'; "
-        "script-src 'self' https://cdnjs.cloudflare.com 'unsafe-inline'; "
-        "style-src 'self' https://cdnjs.cloudflare.com https://fonts.googleapis.com 'unsafe-inline'; "
-        "font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; "
-        "connect-src 'self' https://www.cyberentcube.org; "
-        "img-src 'self' data:; "
-        "frame-src 'none'; "
-        "object-src 'none'; "
-        "base-uri 'self';"
-    )
+    response.headers['Content-Security-Policy'] = 'upgrade-insecure-requests'
     response.headers['Strict-Transport-Security'] = 'max-age=63072000; includeSubDomains; preload'
     response.headers['X-Frame-Options'] = 'SAMEORIGIN'
     response.headers['X-Content-Type-Options'] = 'nosniff'
